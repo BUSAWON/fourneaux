@@ -25,7 +25,7 @@ class ViewRecette extends \Library\Model\Model{
 		        'header'  => 'Content-type: application/x-www-form-urlencoded',
 		        'content' => http_build_query(
 								array(
-							        'service' => 'viewrecette',				
+							        'service' => 'viewrecette',				//on peut aussi mettre un tableau(tous ce qu'on vt) pour la valeur de service
 							        'method' => 'getviewrecette',
 							        'id_recette' => $id
 							    )
@@ -38,7 +38,7 @@ class ViewRecette extends \Library\Model\Model{
 	}
 
 	/**
-	 * Obtenir des views precises
+	 * Obtenir des views precis
 	 * @param  [array] $tabId [tableau d'ids de recettes]
 	 * @return [array]	Retourne un tableau (dont les key sont les id des recettes)
 	 *                  contenant les views qui sont elles meme des tableaux
@@ -78,13 +78,13 @@ class ViewRecette extends \Library\Model\Model{
 		        'header'  => 'Content-type: application/x-www-form-urlencoded',
 		        'content' => http_build_query(
 								array(
-							        'service' => 'viewrecette',				
+							        'service' => 'viewrecette',				//on peut aussi mettre un tableau(tous ce qu'on vt) pour la valeur de service
 							        'method' => 'getallviewrecettes',
 							    )
 		    				)
 		        )
 		);
-		
+
 		$context  = stream_context_create($opts);
 		return  $this->convEnTab(json_decode( file_get_contents(WEBSERVICE_ROOT.'/index.php', false, $context) ) ) ;
 
